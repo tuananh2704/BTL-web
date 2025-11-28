@@ -1,0 +1,339 @@
+/* ================================
+   GLOBAL – Apple Minimal Base
+================================ */
+:root {
+  --bg: #ffffff;
+  --text: #111;
+  --text-light: #555;
+  --border: #e5e5e5;
+  --radius: 12px;
+  --shadow: 0 4px 20px rgba(0,0,0,0.05);
+  --transition: 0.25s ease;
+}
+
+body {
+  margin: 0;
+  font-family: "Inter", -apple-system, BlinkMacSystemFont, sans-serif;
+  background: var(--bg);
+  color: var(--text);
+  -webkit-font-smoothing: antialiased;
+}
+
+a {
+  text-decoration: none;
+  color: inherit;
+}
+
+/* ================================
+      HEADER
+================================ */
+.header {
+  position: sticky;
+  top: 0;
+  z-index: 100;
+  background: rgba(255,255,255,0.85);
+  backdrop-filter: blur(12px);
+  border-bottom: 1px solid var(--border);
+}
+
+.header-content {
+  height: 72px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.logo {
+  font-size: 1.4rem;
+  font-weight: 600;
+}
+
+.search-bar {
+  flex: 1;
+  max-width: 400px;
+  margin: 0 2rem;
+}
+
+.search-input {
+  width: 100%;
+  padding: 10px 14px;
+  border-radius: var(--radius);
+  border: 1px solid var(--border);
+  background: #fafafa;
+  transition: var(--transition);
+}
+
+.search-input:focus {
+  border-color: #aaa;
+  background: white;
+}
+
+.nav-links {
+  display: flex;
+  gap: 1rem;
+}
+
+.header-actions {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+}
+
+.auth-btn, .cart-btn, .history-btn {
+  padding: 8px 16px;
+  border-radius: var(--radius);
+  background: #f5f5f5;
+  border: 1px solid var(--border);
+  transition: var(--transition);
+  cursor: pointer;
+}
+
+.auth-btn:hover,
+.cart-btn:hover,
+.history-btn:hover {
+  background: #eee;
+}
+
+/* ================================
+      PRODUCT GRID
+================================ */
+.product-list-section {
+  padding: 3rem 0;
+}
+
+.product-grid {
+  display: grid;
+  gap: 2rem;
+  grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+}
+
+.product-card {
+  border: 1px solid var(--border);
+  border-radius: var(--radius);
+  padding: 1rem;
+  background: white;
+  box-shadow: var(--shadow);
+  transition: var(--transition);
+}
+
+.product-card:hover {
+  transform: translateY(-4px);
+  box-shadow: 0 8px 32px rgba(0,0,0,0.08);
+}
+
+.product-image-container {
+  width: 100%;
+  height: 220px;
+  border-radius: var(--radius);
+  overflow: hidden;
+  background: #f2f2f2;
+  margin-bottom: 1rem;
+}
+
+.product-image {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.product-name {
+  margin: 0;
+  font-weight: 600;
+}
+
+.product-description {
+  color: var(--text-light);
+  font-size: 0.9rem;
+  margin: 0.5rem 0;
+}
+
+.product-footer {
+  margin-top: 1rem;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.add-to-cart-btn {
+  padding: 8px 14px;
+  border-radius: var(--radius);
+  background: #111;
+  border: none;
+  color: white;
+  cursor: pointer;
+  transition: var(--transition);
+}
+
+.add-to-cart-btn:hover {
+  background: #333;
+}
+
+/* ================================
+          CART SIDEBAR
+================================ */
+.cart-overlay {
+  position: fixed;
+  inset: 0;
+  background: rgba(0,0,0,0.3);
+  backdrop-filter: blur(3px);
+  z-index: 999;
+}
+
+.cart-sidebar {
+  width: 380px;
+  height: 100%;
+  background: white;
+  position: absolute;
+  right: 0;
+  padding: 1.5rem;
+  overflow-y: auto;
+  border-left: 1px solid var(--border);
+  animation: slideIn 0.25s ease forwards;
+}
+
+@keyframes slideIn {
+  from { transform: translateX(100%); }
+  to   { transform: translateX(0); }
+}
+
+.cart-item {
+  display: flex;
+  gap: 1rem;
+  border-bottom: 1px solid var(--border);
+  padding-bottom: 1rem;
+  margin-bottom: 1rem;
+}
+
+.cart-item-image {
+  width: 70px;
+  height: 70px;
+  border-radius: var(--radius);
+  object-fit: cover;
+}
+
+.remove-item-btn {
+  background: transparent;
+  border: none;
+  font-size: 1.4rem;
+  cursor: pointer;
+}
+
+/* ================================
+            MODALS
+================================ */
+.modal-overlay {
+  position: fixed;
+  inset: 0;
+  background: rgba(0,0,0,0.35);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 2000;
+  backdrop-filter: blur(4px);
+}
+
+.modal-content {
+  background: white;
+  border-radius: var(--radius);
+  padding: 2rem;
+  width: 360px;
+  box-shadow: var(--shadow);
+  animation: fadeIn 0.25s ease;
+}
+
+@keyframes fadeIn {
+  from { opacity: 0; transform: scale(0.96); }
+  to   { opacity: 1; transform: scale(1); }
+}
+
+.close-btn {
+  background: none;
+  border: none;
+  font-size: 1.6rem;
+  cursor: pointer;
+  float: right;
+}
+
+/* ================================
+        FOOTER
+================================ */
+.footer {
+  padding: 2rem;
+  background: #fafafa;
+  border-top: 1px solid var(--border);
+  margin-top: 2rem;
+}
+
+/* ================================
+       ADMIN DASHBOARD
+================================ */
+.admin-container {
+  display: flex;
+  min-height: 100vh;
+}
+
+/* Sidebar */
+.admin-sidebar {
+  width: 240px;
+  background: #f8f8f8;
+  border-right: 1px solid var(--border);
+  padding: 1.5rem;
+  position: sticky;
+  top: 0;
+  height: 100vh;
+}
+
+.admin-nav-link {
+  display: block;
+  padding: 10px 0;
+  color: var(--text);
+  opacity: 0.7;
+  transition: var(--transition);
+}
+
+.admin-nav-link:hover,
+.admin-nav-link.active {
+  opacity: 1;
+}
+
+/* Content */
+.admin-content {
+  flex: 1;
+  padding: 2rem;
+}
+
+.stat-card {
+  background: white;
+  border: 1px solid var(--border);
+  padding: 1.5rem;
+  border-radius: var(--radius);
+  box-shadow: var(--shadow);
+  text-align: center;
+}
+
+.admin-table {
+  width: 100%;
+  border-collapse: collapse;
+  margin-top: 1rem;
+}
+
+.admin-table th,
+.admin-table td {
+  padding: 12px;
+  border-bottom: 1px solid var(--border);
+  text-align: left;
+}
+
+.action-btn {
+  padding: 6px 14px;
+  background: #111;
+  color: white;
+  border: none;
+  border-radius: var(--radius);
+  cursor: pointer;
+  transition: var(--transition);
+}
+
+.action-btn:hover {
+  background: #333;
+}
